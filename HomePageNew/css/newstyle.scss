@@ -1,0 +1,164 @@
+.home_image {
+	width: 50px;
+	height: 50px;
+}
+
+nav {
+	margin-bottom: 20px;
+}
+
+.break::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.card:hover {
+	background-color: #ccc;
+}
+
+.main-menu .card:hover {
+	transition: transform .3s;
+}
+
+.main-menu .card:hover {
+	transform: translateY(-10px);
+}
+
+.main-item {
+	height: 25vh;
+	box-shadow: -4px -4px 10px rgba(0, 0, 0, 0.1), 4px 4px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	background: #F8F8F8;
+	margin-bottom: 0;
+}
+
+
+
+
+
+.card-img-top-main {
+	margin: auto ;
+	height: 15vh;
+}
+
+.card-title {
+	margin: 0 !important;
+}
+
+.card-body-bottom {
+	background-color: rgba(0, 0, 0, 0);
+	height: 0vh;
+	margin: 5px 16px; 
+	padding: 0 !important; 
+	display: inline-block;
+}
+
+h4 {
+	font-size: 20px !important;
+	line-height: 10px;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+}
+
+.card-body-bottom hr {
+	color: #C4C4C4;
+	margin: 0 0 10px !important;
+
+
+}
+
+.cart-icon {
+	float: right;
+	width: 30px;
+	height: 30px;
+	padding: 0px;
+	margin-top: -2px;
+	border-radius: 10px;
+
+}
+
+.price {
+	color: #F80000;
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+
+.right-side {
+	background: #FFFFFF;
+	mix-blend-mode: normal;
+	box-shadow: -1px 0px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cart-side-icon {
+	width: 30px;
+	height: 30px;
+	margin: -5px 5px 5px 5px;
+}
+
+.dropdown {
+	display: inline-block;
+    margin-left: 37%;
+}
+
+.dropdown button {
+	border-radius: 15px;
+	background: #D8D8D8;
+	padding: 5px 15px;
+	border: none;
+	color: black;
+	font-weight: bold;
+}
+
+.head::after {
+	display: table;
+	content: "";
+	clear: both;
+
+}
+
+.dropdown-menu {
+	padding: 0;
+}
+
+.dropdown-item {
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+}
+
+.close-icon {
+	width: 20px;
+	height: 20px;
+	float: right;
+	margin-top: -10px;
+}
+
+.close-icon::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+
+.order-list .card {
+	border: 3px solid #F0F0F0;
+	border-radius: 15px;
+	margin: 5px 10px;
+}
+
+.dish-img{
+	width: 50%px;
+ 	height: 70px;
+ 	position: absolute;
+ 	top: 12%;
+ 	left: 14%;
+}
+
+#category{
+    display: flex;
+    flex-wrap: wrap;
+}

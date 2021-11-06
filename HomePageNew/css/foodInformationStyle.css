@@ -1,0 +1,37 @@
+.modal-dialog {
+  border-radius: 30%;
+}
+
+.modal-header {
+  background-color: #F0F0F0;
+}
+
+.modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.modal-img-container {
+  border: solid;
+  border-color: #F0F0F0;
+  width: 200px;
+  height: 200px;
+}
+
+.modal-info {
+  margin-left: 5%;
+  width: 70%;
+}
+
+.btn-add {
+  height: 40px;
+  width: 70%;
+  background-color: #ebeb9c;
+  text-align: center;
+  color: white;
+  background-color: red;
+}
+/*# sourceMappingURL=foodInformationStyle.css.map */
