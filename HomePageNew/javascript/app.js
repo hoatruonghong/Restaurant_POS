@@ -125,9 +125,10 @@ const foodInfo = document.querySelector(".food-info-modal");
 
 //render category
 function renderCategory(){
+
     types.forEach((type) => {
         categoryEl.innerHTML += `
-        <div class="item mb-4" id = "${type.type}" onClick = "renderMenu(${type.type})">
+        <div id = "${type.type}" onClick = "renderMenu(${type.type})" style="margin-right: 25px;margin-left: 5px;">
             <div class="card border-0 shadow ">
                 <img src="${type.srcImg}" class="card-img-top m-auto" style="height: 105px; width: 135px;" >
                 <div class="card-body">
@@ -140,7 +141,11 @@ function renderCategory(){
         `;
     });
 }
+
 renderCategory();
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel();
+  });
 
 //render menu
 function renderMenu(typeID){
@@ -152,7 +157,7 @@ function renderMenu(typeID){
             menuItems.innerHTML += `
             <div class="col-sm-4 col-6" style="padding-bottom: 15px;">
                     <div class="card main-item" data-bs-toggle="modal" data-bs-target="#sp${dish.id}">
-                        <img class="card-img-top card-img-top-main" style="width: 60%;"  src="${dish.srcImg}" alt="Card image">
+                        <img class="card-img-top card-img-top-main" style="height: 135px; width: 135px;"  src="${dish.srcImg}" alt="Card image">
                         <div class="card-body card-body-bottom">
                             <h4 class="card-title"><span class="price">
                             ${dish.id}. 
@@ -168,6 +173,7 @@ function renderMenu(typeID){
         }
     });
 }
+renderMenu(0);
 
 //render modal food informatiion
 function renderFoodInfo(dish){    
@@ -246,10 +252,9 @@ function renderFoodInfo(dish){
                 </div>
             </div>
             <b style="color:#2C3A57;font-size:12pt;">Món ăn kèm</b>
-            <p>Quý khách có thể chọn một số món ăn kèm sau đây:</p>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault" style="color:#2C3A57;font-size:12pt;">Rau</label>
+            <p id="temp_${dish.id}">Quý khách có thể chọn một số món ăn kèm sau đây:</p>
+            <div class="form-check" id="side-dishes_${dish.id}">
+                
             </div>
           </div>
         </div>
@@ -261,5 +266,19 @@ function renderFoodInfo(dish){
     </div>
   </div>
     `;
-    
+    const temp = document.getElementById("side-dishes_"+dish.id);
+    if(dish.side_dishes.length == 0){
+        document.getElementById("temp_"+dish.id).innerHTML="Không có món ăn kèm theo"
+    }
+    else{
+        let i = -1;
+        dish.side_dishes.forEach((sdish)=>{
+            i = i + 1;
+            temp.innerHTML+=`
+            <input class="form-check-input" type="checkbox" value="" id="sdish_${i}">
+            <label class="form-check-label" for="sdish_${i}" style="color:#2C3A57;font-size:12pt;">${sdish.sname}</label>
+            `;
+        });  
+    }      
 }
+
