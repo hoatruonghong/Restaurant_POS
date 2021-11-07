@@ -411,3 +411,37 @@ function changeNumberOfUnits(action, id) {
 }
 
 
+//Search by name
+
+//render search menu
+function renderSearchMenu(dish){    
+    const menuItems = document.querySelector(".main-menu");
+    menuItems.innerHTML += `
+            <div class="col-sm-4 col-6" style="padding-bottom: 15px;">
+                    <div class="card main-item" data-bs-toggle="modal" data-bs-target="#sp${dish.id}">
+                        <img class="card-img-top card-img-top-main" style="height: 135px; width: 135px;"  src="${dish.srcImg}" alt="Card image">
+                        <div class="card-body card-body-bottom">
+                            <h4 class="card-title"><span class="price">
+                            ${dish.id}. 
+                            </span>${dish.name}</h4>
+                            <hr>
+                            <h4 class="price">${dish.price} đ</h4>
+                            <img class="cart-icon" src="images/cart1.png">
+                        </div>
+                    </div>
+                </div>
+            `;
+    renderFoodInfo(dish);
+}
+
+function searchByFoodName(){
+    let foodName = String(document.getElementById("SearchByName").value);
+    const menuItems = document.querySelector(".main-menu");
+    menuItems.innerHTML = "";
+    foodInfo.innerHTML="";
+    dishes.forEach((dish)=>{
+        if(dish.name.search(foodName) != -1){
+            renderSearchMenu(dish);
+        }
+    });
+}

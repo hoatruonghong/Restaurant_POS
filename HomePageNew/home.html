@@ -49,9 +49,9 @@
                                 <a class="nav-link active" aria-current="page" href="#"><b style="color:#2C3A57;font-size:14pt;">Về trang chủ</b></a>
                             </li>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Nhập tên món ăn..." aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit"><img src="./images/search.png" width="25px"></button>
+                        <form class="d-flex" onsubmit="return false">
+                            <input type="text" id="SearchByName">
+                            <button onclick="searchByFoodName()"><img src="./images/search.png" width="25px"></button>
                         </form>
                     </div>
                 </div>
