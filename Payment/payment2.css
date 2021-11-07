@@ -1,0 +1,471 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.background {
+  width: 100%;
+  height: 1024px;
+  background: rgba(248,248,248,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.nav_bar {
+  width: 100%;
+  height: 90px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.payment_table {
+  width: 490px;
+  height: 550px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 250px;
+  left: 475px;
+  overflow: hidden;
+}
+.Text1 {
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 18px;
+  opacity: 1;
+  text-align: left;
+}
+.Text3 {
+  width: 127px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  font-family: Alatsi;
+  font-weight: Bold;
+  font-size: 22px;
+  opacity: 1;
+  text-align: right;
+}
+.Text4 {
+  width: 81px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 28px;
+  right: 10px;
+  font-family: Be Vietnam;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: right;
+}
+
+.Payment_method {
+  width: 490px;
+  height: 116px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 67px;
+  left: 0px;
+  border: 3px solid rgba(240,240,240,1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.PM_header {
+  width: 490px;
+  height: 60px;
+  background: rgba(240,240,240,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+.Text2 {
+  width: 241px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 22px;
+  left: 124px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.PM_table {
+  width: 490px;
+  height: 56px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  overflow: hidden;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 63px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: Alatsi;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  left: 24px;
+}
+
+.checkmark {
+  width: 22px;
+  height: 22px;
+  background: rgba(240,240,240,1);
+  opacity: 1;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  border-radius: 50%;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: rgba(248,0,0,1);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(44,58,87,1);
+}
+.visa {
+  width: 50px;
+  height: 15px;
+  background: url("./visa.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 79px;
+  left: 359px;
+  overflow: hidden;
+}
+.mastercard {
+  width: 32px;
+  height: 20px;
+  background: url("./mastercard.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 74px;
+  left: 429px;
+  overflow: hidden;
+}
+.VN {
+  width: 30px;
+  height: 30px;
+  background: url("./VN.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 512px;
+  left: 450px;
+  overflow: hidden;
+}
+.Text5 {
+  width: 87px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 519px;
+  left: 0px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 18px;
+  opacity: 1;
+  text-align: right;
+}
+.Text6 {
+  width: 134px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 30px;
+  left: 653px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+.Text7 {
+  width: 125px;
+  color: #c4c4c4;
+  position: absolute;
+  top: 34px;
+  left: 1110px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 21px;
+  opacity: 1;
+  text-align: left;
+}
+.Texta7 {
+  width: 10px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 34px;
+  left: 1235px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 21px;
+  opacity: 1;
+  text-align: left;
+}
+.Textb7 {
+  width: 125px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 34px;
+  right: 80px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 21px;
+  opacity: 1;
+  text-align: right;
+}
+.Text8 {
+  width: 229px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 30px;
+  left: 110px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+.button back{
+  border-width:0px;
+  border: none;
+}
+.back {
+  width: 60px;
+  height: 60px;
+  background: url("./back.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  overflow: hidden;
+}
+
+.cancel_frame {
+  width: 490px;
+  height: 70px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 440px;
+  left: 0px;
+  border: 3px solid rgba(240,240,240,1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.Text9 {
+  width: 120px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 24px;
+  left: 348px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 18px;
+  opacity: 1;
+  text-align: left;
+}
+.pay {
+  width: 410px;
+  height: 53px;
+  background: rgba(248,0,0,1);
+  opacity: 1;
+  position: absolute;
+  top: 360px;
+  left: 40px;
+  border: 3px solid rgba(248,0,0,1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.Text10 {
+  width: 170px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 15px;
+  left: 120px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 18px;
+  opacity: 1;
+  text-align: left;
+}
+.card_number {
+  width: 410px;
+  height: 53px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 214px;
+  left: 40px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+}
+.Text11 {
+  width: 84px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 5px;
+  left: 70px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.card {
+  width: 38px;
+  height: 27px;
+  background: url("./card.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  overflow: hidden;
+}
+
+.register_date {
+  width: 195px;
+  height: 53px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 288px;
+  left: 40px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+}
+.Text12 {
+  width: 44px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.cvv {
+  width: 200px;
+  height: 53px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 287px;
+  left: 250px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+}
+.Text13 {
+  width: 25px;
+  color: rgba(44,58,87,1);
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  font-family: Alatsi;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.question {
+  width: 25px;
+  height: 25px;
+  background: url("./question.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 14px;
+  left: 160px;
+  overflow: hidden;
+}
