@@ -125,9 +125,10 @@ const foodInfo = document.querySelector(".food-info-modal");
 
 //render category
 function renderCategory(){
+
     types.forEach((type) => {
         categoryEl.innerHTML += `
-        <div class="item mb-4" id = "${type.type}" onClick = "renderMenu(${type.type})">
+        <div id = "${type.type}" onClick = "renderMenu(${type.type})" style="margin-right: 25px;margin-left: 5px;">
             <div class="card border-0 shadow ">
                 <img src="${type.srcImg}" class="card-img-top m-auto" style="height: 105px; width: 135px;" >
                 <div class="card-body">
@@ -140,7 +141,11 @@ function renderCategory(){
         `;
     });
 }
+
 renderCategory();
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel();
+  });
 
 //render menu
 function renderMenu(typeID){
@@ -152,7 +157,7 @@ function renderMenu(typeID){
             menuItems.innerHTML += `
             <div class="col-sm-4 col-6" style="padding-bottom: 15px;">
                     <div class="card main-item" data-bs-toggle="modal" data-bs-target="#sp${dish.id}">
-                        <img class="card-img-top card-img-top-main" style="width: 60%;"  src="${dish.srcImg}" alt="Card image">
+                        <img class="card-img-top card-img-top-main" style="height: 135px; width: 135px;"  src="${dish.srcImg}" alt="Card image">
                         <div class="card-body card-body-bottom">
                             <h4 class="card-title"><span class="price">
                             ${dish.id}. 
@@ -168,6 +173,7 @@ function renderMenu(typeID){
         }
     });
 }
+renderMenu(0);
 
 //render modal food informatiion
 function renderFoodInfo(dish){    
@@ -260,6 +266,6 @@ function renderFoodInfo(dish){
       </div>
     </div>
   </div>
-    `;
-    
+    `;    
 }
+
