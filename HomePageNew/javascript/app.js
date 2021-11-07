@@ -119,9 +119,20 @@ const dishes = [
     ];
 
 
-//select elements
+let count = 1;
+// cart array
+
+
+// SELECT ELEMENTS
+const dishesEl = document.querySelector(".main-menu");
+const cartItemsEl = document.querySelector(".order-list");
+const subtotalEl = document.querySelector(".subtotal");
+const taxtotalEl = document.querySelector('.totaltax');
 const categoryEl = document.querySelector("#category");
 const foodInfo = document.querySelector(".food-info-modal");
+
+
+
 
 //render category
 function renderCategory(){
@@ -164,7 +175,7 @@ function renderMenu(typeID){
                             </span>${dish.name}</h4>
                             <hr>
                             <h4 class="price">${dish.price} đ</h4>
-                            <img class="cart-icon" src="images/cart1.png">
+                            <img class="cart-icon" src="images/cart1.png" onclick="addToCart(${dish.id})">
                         </div>
                     </div>
                 </div>
@@ -259,7 +270,7 @@ function renderFoodInfo(dish){
           </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-add" data-bs-dismiss="modal" style="height: 40px;width: 70%;background-color:rgb(235, 235, 156);text-align: center;color: white;background-color: red;">
+            <button type="button" onclick="addToCart(${dish.id})" class="btn btn-default btn-add" data-bs-dismiss="modal" style="height: 40px;width: 70%;background-color:rgb(235, 235, 156);text-align: center;color: white;background-color: red;">
             <p><img style="height: 30px;" src="images/cart1.png"/><b style="font-size:12pt;margin-left:2%;">Thêm vào đơn hàng</b></p></button>
         </div>
       </div>
@@ -281,4 +292,122 @@ function renderFoodInfo(dish){
         });  
     }      
 }
+
+let cart = JSON.parse(localStorage.getItem("CART")) || [];
+updateCart();
+
+
+// ADD TO CART
+function addToCart(id) {
+  // check if prodcut already exist in cart
+  if (cart.some((item) => item.id === id)) {
+    changeNumberOfUnits("plus", id);
+  } else {
+    const item = dishes.find((dish) => dish.id === id);
+    
+    cart.push({
+      ...item,
+      numberOfUnits: 1,
+    });
+    console.log(cart);
+  }
+
+
+  updateCart();
+}
+
+// update cart
+function updateCart() {
+  renderCartItems();
+  renderSubtotal();
+
+  // save cart to local storage
+  localStorage.setItem("CART", JSON.stringify(cart));
+}
+
+// calculate and render subtotal
+function renderSubtotal() {
+  let totalPrice = 0;
+  let totalTax = 0;
+
+  cart.forEach((item) => {
+    totalPrice += item.price * item.numberOfUnits;
+  });
+  totalTax = totalPrice / 10;
+  
+
+  subtotalEl.innerHTML = `${totalPrice}đ`;
+  `"(Thuế GTGT 10% = ${totalTax})"`
+  taxtotalEl.innerHTML =  `(Thuế GTGT 10% = ${totalTax})`;
+}
+
+
+// render cart items
+function renderCartItems() {
+  cartItemsEl.innerHTML = ""; // clear cart element
+  count = 1;
+  cart.forEach((item) => {
+    cartItemsEl.innerHTML += `
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-2" style="display: flex;justify-content: center;">
+                    <img src="${item.srcImg}" class="rounded-start dish-img" alt="coca">
+                </div>
+                <div class="col-10">
+                    <div class="card-body">
+                        <h4 class="card-title"><span class="price">${ count }. </span> ${item.name}
+                            <span onclick="removeItemFromCart(${item.id})"><img class="close-icon" src="images/close.png"></img></span></h4>
+
+
+                        <div class="card-text">
+                            <button type="button" class="quantity-btn" onclick="changeNumberOfUnits('minus', ${item.id})">-</button>
+                            <span >${item.numberOfUnits}</span>
+                            <button type="button" class="quantity-btn" onclick="changeNumberOfUnits('plus', ${item.id})">+</button>
+                            <div style="display: flex; flex-direction: column;">
+                            <h4 class="price" style="text-align: right;">${item.price}</h4>
+                            <p> (Thuế GTGT 10% = 2.300đ)</p>
+                            </div> 
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      `;
+    count = count + 1;
+  });
+}
+
+// remove item from cart
+function removeItemFromCart(id) {
+  cart = cart.filter((item) => item.id !== id);
+
+  updateCart();
+}
+
+// change number of units for an item
+function changeNumberOfUnits(action, id) {
+  cart = cart.map((item) => {
+    let numberOfUnits = item.numberOfUnits;
+
+    if (item.id === id) {
+      if(action === "minus" && numberOfUnits === 1)
+          removeItemFromCart(id);
+      if (action === "minus" && numberOfUnits > 1) {
+        numberOfUnits--;
+      } else if (action === "plus") {
+        numberOfUnits++;
+      }
+    }
+
+    return {
+      ...item,
+      numberOfUnits,
+    };
+  });
+
+  updateCart();
+}
+
 
