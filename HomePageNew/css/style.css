@@ -86,7 +86,7 @@ h4 {
 
 #right-side {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   margin-left: 2%;
   position: -webkit-sticky;
   position: sticky;
@@ -154,9 +154,6 @@ h4 {
   margin: 5px 10px;
 }
 
-.dish-img {
-  
-}
 
 #category {
   width: 98%;
