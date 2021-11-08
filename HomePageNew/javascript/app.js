@@ -223,9 +223,9 @@ function renderFoodInfo(dish){
                     <b style="color:#2C3A57;font-size:15pt;">Số lượng</b><br>
                 </div>
                 <div class="col-sm-4" style="text-align: right;">
-                    <button type="button" class="quantity-btn">-</button>
+                    <button type="button" class="quantity-btn" onclick="changeNumberOfUnits('minus', ${dish.id})">-</button>
                         <span style="padding: 0 5px;font-size:15pt;">1</span>
-                    <button type="button" class="quantity-btn">+</button>
+                    <button type="button" class="quantity-btn" onclick="changeNumberOfUnits('plus', ${dish.id})">+</button>
                 </div>
             </div>
             <hr style="margin-top: 15px; color: #C4C4C4;">
