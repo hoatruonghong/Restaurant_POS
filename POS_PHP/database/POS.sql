@@ -89,9 +89,11 @@ INSERT INTO `product` (`name`, `type`,`price`, `IMG`) VALUES
 
 -- --------------------------------------------------------
 -- temp bill
+/*
 INSERT INTO `order`(`status`) VALUES(0);
 
 INSERT INTO `cart`(`orderID`, `productID`, `quantity`) VALUES
 (1,1,1),
 (1,2,2),
 (1,6,4);
+*/

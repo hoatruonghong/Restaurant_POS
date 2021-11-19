@@ -14,6 +14,8 @@ $order = mysqli_query($conn, $sql);
 if (mysqli_num_rows($order) == 0) {
     $sql = "INSERT INTO `order`(`status`) VALUES(0);";
     $order = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM `order` ORDER BY `ID` DESC LIMIT 1;";
+    $order = mysqli_query($conn, $sql);
     $order = mysqli_fetch_assoc($order);
 }
 else{
@@ -25,6 +27,9 @@ else{
     }
 }
 
+
+
+
 $orderID=$order['ID'];
 
 $sql = "SELECT * FROM `category`;";
@@ -32,7 +37,7 @@ $category = mysqli_query($conn, $sql);
 
 $sql = "SELECT * FROM `product`;";
 $product = mysqli_query($conn, $sql);
-$product1 = mysqli_query($conn, $sql);
+$modal = mysqli_query($conn, $sql);
 
 $sql = "SELECT * FROM `table`;";
 $table = mysqli_query($conn, $sql);
@@ -233,7 +238,7 @@ mysqli_close($conn);
                             <b style="color:#2C3A57; font-size:12px; padding-right:10px;">Đã bao gồm 10% VAT</b>
                         </div>
                     </div>
-                    <button style="color: white; background-color:red; font-weight:bold; width:90%;margin-left:5%; margin-top:10px;">
+                    <button style="color: white; background-color:red; font-weight:bold; width:90%;margin-left:5%; margin-top:10px;margin-bottom:10px;">
                         Thanh toán
                     </button>
                 </div>
@@ -242,7 +247,7 @@ mysqli_close($conn);
     </div>
 
 
-<?php if (mysqli_num_rows($product1) > 0) {while ($row = mysqli_fetch_assoc($product1)) { ?>
+    <?php if (mysqli_num_rows($modal) > 0) {while ($row = mysqli_fetch_assoc($modal)) { ?>
     <div class="modal fade" id="Modal<?php echo $row['ID']; ?>" tabindex="-1" aria-labelledby="ItemModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -250,7 +255,7 @@ mysqli_close($conn);
             <!-- Modal Header -->
                 <div class="modal-header" style="background-color: #F0F0F0;">          
                     <b style="color:#2C3A57; font-size:22px; padding-left:10px;">Thông tin món ăn</b>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button onclick = "location.reload()" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
       
             <!-- Modal body -->
@@ -282,11 +287,11 @@ mysqli_close($conn);
                                     <b style="color:#2C3A57; font-size:20px; padding-left:10px;">Số lượng </b>
                                 </div>
                                 <div style="width:50%; text-align:right;">
-                                    <button style="width: 30px; height:30px"><b>-</b></button>                               
-                                    <b style="color:#2C3A57; font-size:18px; padding-left:5px;">
+                                    <button onclick="javascript:addOrMinusBtnInModal('amount<?php echo $row['ID']; ?>', 'totalprice<?php echo $row['ID']; ?>', <?php echo $row['price']; ?>, 0)" style="width: 30px; height:30px"><b>-</b></button>                               
+                                    <b id="amount<?php echo $row['ID']; ?>" style="color:#2C3A57; font-size:18px; padding-left:5px;">
                                         1
                                     </b>
-                                    <button style="width: 30px; height:30px"><b style="color:red;">+</b></button>
+                                    <button onclick="javascript:addOrMinusBtnInModal('amount<?php echo $row['ID']; ?>', 'totalprice<?php echo $row['ID']; ?>', <?php echo $row['price']; ?>, 1)" style="width: 30px; height:30px"><b style="color:red;">+</b></button>
                                 </div>
                             </div>
                             <hr style="margin-top: 20px; width: 99%; color:#C4C4C4;">
@@ -302,7 +307,7 @@ mysqli_close($conn);
                                     <p style="color:#2C3A57;font-size:10pt;padding-left:5px;">(Không bắt buộc)</p>
                                 </div>
                                 <div class="col-sm-8">
-                                    <textarea id="note" class="form-control" aria-label="With textarea" placeholder="VD: không bỏ hành"></textarea>
+                                    <textarea id="note<?php echo $row['ID']; ?>" class="form-control" aria-label="With textarea" placeholder="VD: không bỏ hành"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -311,16 +316,42 @@ mysqli_close($conn);
       
             <!-- Modal footer -->
             <div class="modal-footer" style="text-align: right;">
-              <button style="width:72%; background-color:red; color:white" type="button"  data-bs-dismiss="modal">
+              <button onclick = "javascript:UpdateOrAddFromModal(<?php echo $row['ID']?>,'note<?php echo $row['ID']; ?>','totalprice<?php echo $row['ID']; ?>','amount<?php echo $row['ID']; ?>')" style="width:72%; background-color:red; color:white" type="button"  data-bs-dismiss="modal">
                   <img src="../images/cart1.png" height="30px">
-                  <b><?php echo $row['price']; ?> đ</b>
+                  <b id="totalprice<?php echo $row['ID']; ?>"><?php echo $row['price']; ?></b><b> đ</b>
               </button>
             </div>
           </div>
         </div>
       </div>
+    <?php }} ?>
 
-<?php }} ?>
+    <script type="text/javascript">
+        // add: mode = 1; minus: mode = 0
+        function addOrMinusBtnInModal(amountID, totalpriceID, price, mode){
+            var amount = parseInt(document.getElementById(amountID).innerHTML.trim());
+            amount = (mode == 1)? amount + 1: amount - 1;
+            if(amount == 0) return;
+            var total = amount * price;
+            document.getElementById(amountID).innerHTML = amount.toString();
+            document.getElementById(totalpriceID).innerHTML = total.toString();
+        }
+
+        function UpdateOrAddFromModal(PID, note, total_price, quantity){
+            var qty = parseInt(document.getElementById(quantity).innerHTML.trim());
+            var total = parseInt(document.getElementById(total_price).innerHTML.trim());
+            var notetext = document.getElementById(note).value.toString();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "UpdateOrAddFromModal.php?ProID=" + PID + "&note=" + notetext + "&total=" + total + "&qty="+ qty, true);
+            xmlhttp.send();
+            location.reload();
+        }
+    </script>
 
 </body>
 </html>
