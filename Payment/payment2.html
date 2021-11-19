@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@100;300&display=swap" rel="stylesheet">
     <link href="./payment2.css" rel="stylesheet" />
@@ -12,8 +13,6 @@
       <div class="nav_bar">
         <span class="Text6">THANH TOÁN</span>
         <a href="./home.html" class="Text7">Trang chủ</a>
-        <span class="Texta7">.</span>
-        <span class="Textb7">Thanh toán</span>
         <span class="Text8">Quay lại</span>
         <button class="back" id="back" onclick="location.href='./payment1.html';return false;"> </button>
       </div>
@@ -27,34 +26,22 @@
           </div>
           <div class="PM_table">
             <label class="container">Credit Card - tín dụng hoặc ghi nợ
-              <input type="radio" name="radio">
+              <input type="radio" name="radio" checked="checked">
               <span class="checkmark"></span>
+              <div class="visa">
+              </div>
+              <div class="mastercard">
+              </div>
             </label>
           </div>
-          <div class="visa">
-          </div>
-          <div class="mastercard">
-          </div>
         </div>
-        <div class="cancel_frame">
-          <span class="Text9">Hủy thanh toán</span>
-        </div>
-        <div class="pay">
-          <span class="Text10">THANH TOÁN 50.000đ</span>
-        </div>
-        <div class="card_number">
-          <span class="Text11">Card number</span>
-          <div class="card">
-          </div>
-        </div>
-        <div class="register_date">
-          <span class="Text12">MM/YY</span>
-        </div>
-        <div class="cvv">
-          <span class="Text13">CVV</span>
-          <div class="question">
-          </div>
-        </div>
+        <input type="submit" id="cancel" name="cancel" value="Hủy thanh toán" class="Text9">
+        <input type="submit" id="pay" name="pay" value="THANH TOÁN 50.000đ" class="Text10">
+        <input type="text" id="cardno" name="cardno" placeholder="Card number" class="Text11">
+        <div class="card"></div>
+        <input type="text" id="register_date" name="register_date" placeholder="MM/YY" class="Text12">
+        <input type="text" id="cvv" name="cvv" placeholder="CVV" class="Text13">
+        <div class="question"></div>
         <span class="Text5">Điều khoản</span>
         <div class="VN">
         </div>
