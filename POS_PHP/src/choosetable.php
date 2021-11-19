@@ -7,6 +7,6 @@
         }
     $sql = "UPDATE `order` SET `table`= '$gettable' WHERE ID = '$orderID';";
     $order = mysqli_query($conn, $sql);
-    header("location:menu.php");                           
+                              
     }
 ?>

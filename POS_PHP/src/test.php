@@ -84,7 +84,7 @@ mysqli_close($conn);
             xmlhttp.send();
             location.reload();
         }
-        function updateTableOfOrder(table){
+        function updateTableOfOrder(){
 
         }
         
@@ -174,25 +174,14 @@ mysqli_close($conn);
                         </div>
                         
                         <div style="padding-top:10px; margin-left:90px;">
-                            <form method="POST">
+                            
                             <select id="tableNum" name="table-Number">
                                 <?php while ($row = mysqli_fetch_assoc($table)) { ?>
                                 <option value="<?php echo $row['ID']; ?>" <?php if($row['ID']==$order['table']) echo 'selected';?>><?php echo $row['name']; ?></option>
                                 <?php } ?>
                             </select>
-                            <input type = "submit" name="changetable" value="Chọn"/>
+                            <button>Chọn</button>
                             </form>
-                            <?php
-                                if(isset($_POST['changetable'])){
-                                    $gettable=$_POST["table-Number"];
-                                    $conn = new mysqli("localhost", "root", "", "pos");
-                                    if($conn->connect_error){
-	                                    die("Connection Failed!".$conn->connect_error);
-                                    }
-                                    $sql = "UPDATE `order` SET `table`= '$gettable' WHERE ID = '$orderID';";
-                                    $order = mysqli_query($conn, $sql);                           
-                                }
-                            ?>
                         </div>                
                     </div>
 
@@ -324,4 +313,3 @@ mysqli_close($conn);
 
 </body>
 </html>
-
