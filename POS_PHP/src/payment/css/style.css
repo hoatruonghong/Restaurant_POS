@@ -1,0 +1,146 @@
+body {
+	background-color: #f8f8f8 ;
+}
+
+.back-icon {
+	width: 40px;
+	height: 40px;
+}
+
+.header-title {
+	margin: auto;
+	text-decoration: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: #2C3A57;
+}
+
+.header-color{
+	background-color: white;
+}
+
+.contain {
+	width: 50%;
+	min-width: 340px;
+	margin: auto;	
+	height: 100vh;
+}
+
+.main {
+	width: 100%;
+	height: 300px;
+	margin-top: 15vh;
+}
+
+.row1 {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+
+}
+
+.row1 .text1, .text2 {
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 28px;
+	color: #2C3A57;
+}
+
+.row2 {
+	text-align: center;
+	background: #F0F0F0;
+	border-radius: 10px 10px 0px 0px;
+	padding: 10px 0;
+}
+
+.row3 {
+	padding: 0 15px 15px;
+	background-color: #ffffff;
+}
+
+.form-check img {
+	width: 50px;
+	height: 25px;
+	float: right;
+	margin-top: 5px;
+}
+
+.form-check{
+	padding: 10px 0;
+	border-bottom: 1px solid #f8f8f8;
+
+}
+
+.form-check::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.button {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.row5 {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.row5 img {
+	width: 50px;
+	height: 40px;
+}
+
+.row5 p {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.form-check label{
+	font-size: 18px;
+}
+
+
+#visa-detail {
+	display: none;
+	margin-top: 20px;
+
+}
+
+#visa-detail label{
+	font-size: 14px;
+	margin: 0;
+}
+
+#card-detail {
+	display: none;
+	margin-top: 20px;
+}
+
+#card-detail label{
+	font-size: 14px;
+	margin: 0;
+}
+
+#momo-detail {
+	display: none;
+	margin-top: 20px;
+}
+
+#momo-detail label{
+	font-size: 14px;
+	margin: 0;
+}
+
+#zalopay-detail {
+	display: none;
+	margin-top: 20px;
+}
+
+#zalopay-detail label{
+	font-size: 14px;
+	margin: 0;
+}
