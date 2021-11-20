@@ -65,12 +65,8 @@ mysqli_close($conn);
         // delete product in cart
         function delProInCart(ID){
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("txtHint").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "delProInCart.php?ProIDToDel=" + ID, true);
+
+            xmlhttp.open("GET", "delProInCart.php?ProIDToDel=" + ID, false);
             xmlhttp.send();
             location.reload();
         }
@@ -79,17 +75,27 @@ mysqli_close($conn);
             var newQty = (mode == 0)? curQty - 1 : curQty + 1;
             var xmlhttp = new XMLHttpRequest();
             if(newQty == 0) delProInCart(PID);
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("txtHint").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "inOrDecreaseQty.php?newQty=" + newQty + "&PIDToChange=" + PID, true);
+
+            xmlhttp.open("GET", "inOrDecreaseQty.php?newQty=" + newQty + "&PIDToChange=" + PID, false);
             xmlhttp.send();
             location.reload();
         }
-        function updateTableOfOrder(table){
 
+        function filterbycategory(OID){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("main-menu").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "filterbycategory.php?OID=" + OID, true);
+            xmlhttp.send();
+        }
+
+        function updateTable(option){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "updateTable.php?tableID=" + option.value, true);
+            xmlhttp.send();
         }
         
 
@@ -125,7 +131,7 @@ mysqli_close($conn);
                 <main id="category-container" style="padding: 10px;">
                     <section id="category">
                     <?php while ($row = mysqli_fetch_assoc($category)) { ?>
-                        <div class="type-item shadow">
+                        <div class="type-item shadow" onclick="filterbycategory(<?php echo $row['ID'];?>)">
                             <img src="<?php echo $row['IMG'];?>" height="100px">  
                             <br><b style="color:#2C3A57;"><?php echo $row['name'];?></b>
                         </div>
@@ -137,7 +143,7 @@ mysqli_close($conn);
 
                     <div class="row">
                         <div class="col-sm-2" style=" padding: 10px;">
-                            <b style="color:#2C3A57; font-size:19px; padding-left:10px;">Tất cả</b>
+                            <b style="color:#2C3A57; font-size:19px; padding-left:10px;">Thực đơn</b>
                         </div>
                         <div class="col-sm-10" >
                             <hr style="margin-top: 20px; width: 99%; color:#C4C4C4;">
@@ -146,6 +152,7 @@ mysqli_close($conn);
 
                 </div>
                 <!-- main menu -->
+                <div id="main-menu">
                 <div class="row" style=" padding: 10px;">
                 <?php if (mysqli_num_rows($product) > 0) {while ($row = mysqli_fetch_assoc($product)) { ?>
                     <div class="col-sm-4 col-6">
@@ -247,7 +254,7 @@ mysqli_close($conn);
                 <?php }} ?>
                 </div>
             </div>
-            
+                </div>    
             
             <div class="col-sm-4 shadow" id="cart" style=" padding:0;">
                 <div id="cart-container">
@@ -259,25 +266,13 @@ mysqli_close($conn);
                         </div>
                         
                         <div style="padding-top:10px; margin-left:90px;">
-                            <form method="POST">
-                            <select id="tableNum" name="table-Number">
+
+                            <select id="tableNum" name="table-Number" onchange="updateTable(this);">
                                 <?php while ($row = mysqli_fetch_assoc($table)) { ?>
                                 <option value="<?php echo $row['ID']; ?>" <?php if($row['ID']==$order['table']) echo 'selected';?>><?php echo $row['name']; ?></option>
                                 <?php } ?>
                             </select>
-                            <input type = "submit" name="changetable" value="Chọn"/>
-                            </form>
-                            <?php
-                                if(isset($_POST['changetable'])){
-                                    $gettable=$_POST["table-Number"];
-                                    $conn = new mysqli("localhost", "root", "", "pos");
-                                    if($conn->connect_error){
-	                                    die("Connection Failed!".$conn->connect_error);
-                                    }
-                                    $sql = "UPDATE `order` SET `table`= '$gettable' WHERE ID = '$orderID';";
-                                    $order = mysqli_query($conn, $sql);                           
-                                }
-                            ?>
+                         
                         </div>                
                     </div>
 
@@ -342,12 +337,8 @@ mysqli_close($conn);
             var total = parseInt(document.getElementById(total_price).innerHTML.trim());
             var notetext = document.getElementById(note).value.toString();
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("txtHint").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "UpdateOrAddFromModal.php?ProID=" + PID + "&note=" + notetext + "&total=" + total + "&qty="+ qty, true);
+
+            xmlhttp.open("GET", "UpdateOrAddFromModal.php?ProID=" + PID + "&note=" + notetext + "&total=" + total + "&qty="+ qty, false);
             xmlhttp.send();
             location.reload();
         }
@@ -355,4 +346,3 @@ mysqli_close($conn);
 
 </body>
 </html>
-
