@@ -30,8 +30,6 @@ else{
 }
 
 
-
-
 $orderID=$order['ID'];
 
 $sql = "SELECT * FROM `category`;";
