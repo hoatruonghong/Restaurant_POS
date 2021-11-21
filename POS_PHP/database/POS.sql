@@ -113,7 +113,10 @@ INSERT INTO `category` (`name`, `IMG`) VALUES
 ("Coca","../images/coca.png"),
 ("Nước ép","../images/orangejuice.png"),
 ("Mỳ Ý","../images/spaghetti.png"),
-("Tráng miệng","../images/cake.png");
+("Tráng miệng","../images/cake.png"),
+("Kem","../images/chocolateIC.png"),
+("Đồ chiên","../images/friedChicken.png");
+
 
 -- --------------------------------------------------------
 
@@ -124,7 +127,21 @@ INSERT INTO `product` (`name`, `type`,`price`, `IMG`) VALUES
 ("Nước chanh",4, 20000,"../images/lemonade.png"),
 ("Mì ý",5, 60000,"../images/spaghetti.png"),
 ("Mì ý đặc biệt",5, 80000,"../images/sspaghetti.png"),
-("Bánh kem sô cô la",6, 40000,"../images/cake.png");
+("Bánh kem sô cô la",6, 40000,"../images/cake.png"),
+("Kem sô cô la",7, 35000,"../images/chocolateIC.png"),
+("Gà rán",8, 65000,"../images/friedChicken.png"),
+("Khoai tây chiên",8, 45000,"../images/fried.png"),
+("Phô mai que",8, 45000,"../images/friedCheese.png"),
+("Kem trà xanh",7, 40000,"../images/greenTeaIC.png"),
+("Bánh mousse mật ong",6, 45000,"../images/honeyMousse.png"),
+("Hotdog Hàn Quốc",8, 55000,"../images/hotDog.png"),
+("Bánh mousse chanh dây",6, 55000,"../images/lemonMousse.png"),
+("Kem sữa tươi",7, 30000,"../images/milkIC.png"),
+("Nước ép lựu",4, 35000,"../images/pomegranateJuice.png"),
+("Kem dâu",7, 45000,"../images/strawberryIC.png"),
+("Nước ép dâu tây",4, 35000,"../images/strawberryJuice.png"),
+("Nước ép cà chua",4, 30000,"../images/tomatoJuice.png");
+
 
 -- --------------------------------------------------------
 -- temp bill
