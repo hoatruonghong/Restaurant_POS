@@ -52,12 +52,14 @@ body {
 .home{
 	position: absolute;
 	left: 10.64vh;
-	top: 3.3vh;
+	top: 50%;
+	transform: translateY(-50%);
 	font-family: Alatsi;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 1.7vw;
 	line-height: 2.2vw;
+	color: #2C3A57;
 }
 .homeimg {
 	width: 6vh;
@@ -74,8 +76,9 @@ body {
   }
 .box{
 	position: absolute;
-	height: 3.2vw;
-	top: 4.3vh;
+	display: inline-block;
+	top: 4vh;
+	height: 4.8vh;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
 	background-color: #ffffff;
@@ -117,11 +120,10 @@ body {
 	filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
 }
 .ll{
-	position: absolute;
+	position: relative;
 	left: 26.04%;
 	right: 33.33%;
-	top: 56.67%;
-	bottom: 17.5%;
+	top: 60%;
 
 	font-family: Be Vietnam;
 	font-style: normal;
@@ -151,8 +153,8 @@ body {
 	position: absolute;
 	left: 8.24%;
 	top: 35.83%;
-	width: 4vh;
-	height: 4vh;
+	width: 5vh;
+	height: 5vh;
 	background: url(bg.png);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -179,7 +181,7 @@ body {
 .name{
 	position: absolute;
 	left: 26.04%;
-	top: 30.83%;
+	top: 25%;
 	font-family: Alatsi;
 	font-style: normal;
 	font-weight: normal;
@@ -206,7 +208,7 @@ body {
 .rec{
 	position: relative;
 	display: block;
-	top: 13.3vh;
+	top: 12.5vh;
 	font-family: Be Vietnam;
 	font-style: normal;
 	font-weight: normal;
@@ -219,17 +221,18 @@ body {
 	position: absolute;
 	width: 87.2%;
 	height: 9.375vh;
-	left: 2.8vw;
-	top: 18.55vh;
-	
-	border: 3px solid rgba(191, 107, 4, 0.25);
+	left: 50%;
+	transform: translateX(-50%);
+	top: 20vh;
+	padding-bottom: 10%;
+	border: 3px solid #9a7b4f;
 	box-sizing: border-box;
-	border-radius: 25px;
+	border-radius: 20px;
 }
 .gia{
 	position: absolute;
 	left: 9.8vw;
-	top: 5.1vh;
+	top: 5vh;
 	font-family: Be Vietnam;
 	font-style: normal;
 	font-weight: normal;
@@ -240,7 +243,7 @@ body {
 .gia2{
 	position: absolute;
 	left: 15vw;
-	top: 5.2vh;
+	top: 5.1vh;
 	font-family: Alfa Slab One;
 	font-style: normal;
 	font-weight: normal;
@@ -263,11 +266,12 @@ img{
 	position: absolute;
 	width: 87.2%;
 	height: 9.375vh;
-	left: 2.8vw;
-	top: 29.3vh;
-	border: 3px solid rgba(191, 107, 4, 0.25);
+	left: 50%;
+	transform: translateX(-50%);
+	top: 30.75vh;
+	border: 3px solid #9a7b4f;
 	box-sizing: border-box;
-	border-radius: 25px;
+	border-radius: 20px;
 }
 .spaghetti{
 	position: absolute;
@@ -288,16 +292,17 @@ img{
 	position: absolute;
 	width: 87.2%;
 	height: 9.375vh;
-	left: 2.8vw;
-	top: 40vh;
-	border: 3px solid rgba(191, 107, 4, 0.25);
+	left: 50%;
+	transform: translateX(-50%);
+	top: 41.45vh;
+	border: 3px solid #9a7b4f;
 	box-sizing: border-box;
-	border-radius: 25px;
+	border-radius: 20px;
 }
 .emphasize{
 	position: absolute;
 	left: 9.8vw;
-	top: 2vh;
+	top: 20%;
 	font-family: Alfa Slab One;
 	font-style: normal;
 	font-weight: normal;
@@ -344,7 +349,7 @@ img{
 }
 .bubble1{
 	position: absolute;
-	width: 31.25%;
+	width: 35%;
 	height: 5.64vh;
 	left: 4.36vw;
 	top: 0;
@@ -359,13 +364,13 @@ img{
 	font-family: Be Vietnam;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 1.25vw;
 	line-height: 1.7vw;
 	color: #2C3A57;
 }
 .bubble2{
 	position: absolute;
-	width: 90%;
+	width: 95%;
 	height: 5.64vh;
 	left: 4.36vw;
 	top: 6vh;
@@ -399,14 +404,14 @@ input[type=text]{
 	font-family: Be Vietnam;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 1.25vw;
 	line-height: 1.4vw;
 	color: #2C3A57;
 }
 .bg{
 	position: absolute;
 	width: 67vw;
-	height: 100vh;
+	height: 91.3vh;
 	top: 8.8vh;
 	left: 0;
 	background: url(bg.png);
@@ -428,13 +433,13 @@ input[type=text]{
 	margin-top: 1vh;
 	background-color: rgba(255, 255, 255, 0.9);
 	box-sizing: border-box;
-	border: 3px solid rgba(191, 107, 4, 0.25);
+	border: 3px solid #9a7b4f;
 	border-radius: 20px;
 	display: none;
 	z-index: 1;
 }
 .box1.hover{
-	background-color: rgba(191, 107, 4, 0.25);
+	background-color: #9a7b4f;
 }
 .close{
 	display: none;
