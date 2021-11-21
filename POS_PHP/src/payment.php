@@ -14,7 +14,7 @@
 	  die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT MAX(`ID`) AS `ID` FROM `order`;";
+	$sql = "SELECT MAX(`ID`) AS `ID` FROM `order` WHERE `status` = 0;";
 	$OID = mysqli_query($conn, $sql);
 	$OID_row = mysqli_fetch_assoc($OID);
 	$OID_row = $OID_row['ID'];
@@ -35,21 +35,21 @@
 				<h5>PHƯƠNG THỨC THANH TOÁN</h5>
 			</div>
 			<div class="row3">
-				<form action="process.php" method="GET" name="payment_form">
+				<form action="process_payment.php" method="GET" name="payment_form">
 					<div class="form-check">
 					  	<input class="form-check-input" type="radio" name="payment_method" class="payment_method" id="exampleRadios1" value="visa" >
 					  	<label id="formid-check-label" for="exampleRadios1">
 					    	Credit Card - tín dụng hoặc ghi nợ 
 					  	</label>
-					  	<img src="../../images/visa.png">
+					  	<img src="../images/visa.png">
 					  	<div id="visa-detail">
 					  		<div class="card_info" style="margin: 0 10px;">
-					  			<label for="card_num" class="form-label">Card number</label>
+					  			<label for="card_num" class="form-label">Số thẻ</label>
   								<input type="text" class="form-control" id="card_num" placeholder="Card number" name="input1">
   								<div style="display: flex;">
   									<div>
-  										<label for="MMYY" class="form-label">MM/YY</label>
-  										<input class="form-control" type="text" id="MMYY" placeholder="MM/YY" name="input2">
+  										<label for="MMYY" class="form-label">Hạn sử dụng</label>
+  										<input class="form-control" type="text" id="MMYY" placeholder="YYYY-MM-DD" name="input2">
   									</div>
   									<div>
   										<label for="CVV" class="form-label">CVV</label>
@@ -65,13 +65,11 @@
 					  	<label id="form-check-label" for="exampleRadios2">
 					    	Thẻ ngân hàng 
 					  	</label>
-					  	<img src="../../images/card.png">
+					  	<img src="../images/card.png">
 					  	<div id="card-detail">
 					  		<div class="card_info" style="margin: 0 10px;">
-					  			<label for="card_num" class="form-label">Card number</label>
+					  			<label for="card_num" class="form-label">Số tài khoản</label>
   								<input type="text" class="form-control" id="card_num" placeholder="Card number" name="input4">
-  								<label for="pass" class="form-label">Password</label>
-								<input class="form-control" type="password" id="pass" placeholder="********" name="input5">
   
 					  		</div>
 
@@ -82,13 +80,12 @@
 					  	<label id="form-check-label" for="exampleRadios3">
 					    	Ví MOMO
 					  	</label>
-					  	<img src="../../images/momo.png">
+					  	<img src="../images/momo.png">
 					  	<div id="momo-detail">
 					  		<div class="card_info" style="margin: 0 10px;">
-					  			<label for="card_num" class="form-label">Phone number</label>
+					  			<label for="card_num" class="form-label">Số điện thoại</label>
   								<input type="text" class="form-control" id="card_num" placeholder="Phone" name="input6">
-  								<label for="pass" class="form-label">Password</label>
-								<input class="form-control" type="password" id="pass" placeholder="********" name="input7">
+
   
 					  		</div>
 
@@ -99,13 +96,11 @@
 					  	<label id="form-check-label" for="exampleRadios4">
 					    	Ví ZaloPay
 					  	</label>
-					  	<img src="../../images/zalopay.png">
+					  	<img src="../images/zalopay.png">
 					  	<div id="zalopay-detail">
 					  		<div class="card_info" style="margin: 0 10px;">
-					  			<label for="card_num" class="form-label">Phone number</label>
+					  			<label for="card_num" class="form-label">Số điện thoại</label>
   								<input type="text" class="form-control" id="card_num" placeholder="Phone" name="input8">
-  								<label for="pass" class="form-label">Password</label>
-								<input class="form-control" type="password" id="pass" placeholder="********" name="input9">
   
 					  		</div>
 
@@ -116,7 +111,7 @@
 					  	<label id="form-check-label" for="exampleRadios5">
 					    	Tiền mặt
 					  	</label>
-					  	<img src="../../images/cash.png">
+					  	<img src="../images/cash.png">
 					</div>
 
 					<div class="button">
@@ -125,11 +120,11 @@
 					</div>
 				
 				</form>
-				<a href="../menu.php" class="btn w-100 btn-secondary" style="margin-top: 10px;">HỦY</a>
+				<button onclick="deleteOrder()" class="btn w-100 btn-secondary" style="margin-top: 10px;">HỦY</button>
 			</div>
 			<div class="row5">
 				<p>Điều khoản</p>
-				<img src="../../images/VN.png">
+				<img src="../images/VN.png">
 			</div>
 		</div>
 	</div>
@@ -214,7 +209,12 @@
 		// body...
 	});
 
-
+	function deleteOrder(){
+		var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "deleteOrder.php", true);
+        xmlhttp.send();
+		window.location.href='home.html';
+	}
 
 
 

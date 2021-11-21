@@ -5,7 +5,7 @@
     if($conn->connect_error){
         die("Connection Failed!".$conn->connect_error);
     }
-    $sql = "SELECT MAX(`ID`) AS `ID` FROM `order`;";
+    $sql = "SELECT MAX(`ID`) AS `ID` FROM `order` WHERE `status` = 0;";
     $OID = mysqli_query($conn, $sql);
     $OID = mysqli_fetch_assoc($OID);
     $OID = $OID['ID'];

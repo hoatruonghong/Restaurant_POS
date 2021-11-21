@@ -313,7 +313,7 @@ mysqli_close($conn);
                             <b style="color:#2C3A57; font-size:12px; padding-right:10px;">Đã bao gồm 10% VAT</b>
                         </div>
                     </div>
-                    <button style="color: white; background-color:red; font-weight:bold; width:90%;margin-left:5%; margin-top:10px;margin-bottom:10px;">
+                    <button onclick="window.location.href='payment.php';" style="color: white; background-color:red; font-weight:bold; width:90%;margin-left:5%; margin-top:10px;margin-bottom:10px;">
                         Thanh toán
                     </button>
                 </div>
