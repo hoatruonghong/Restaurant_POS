@@ -144,3 +144,55 @@ body {
 	font-size: 14px;
 	margin: 0;
 }
+
+.checked-img {
+	width: 100px;
+	height: 100px;
+
+}
+
+.card-body a{
+	border-radius: 5px;
+	border: 2px solid #7e99e4;
+	background-color: inherit;
+	padding: 14px 30px;
+	text-decoration: none;
+	color: #7e99e4;
+	display: block;
+	width: 50%;
+	margin: auto;
+	font-weight: bold;
+	transform: translate3d(0, 0, 0);
+  	transition: all .3s;
+}
+
+.card-body a:active {
+  box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.card-body a:active:after {
+  opacity: 1;
+}
+
+.card-body a:hover {
+  box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+  opacity: 0.8;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.card-body a:hover {
+	color: 7e99e4;
+}
+
+
+
+@media (min-width: 768px) {
+  .card-body a {
+    padding: 14px 22px;
+    width: 176px;
+  }
+}
+

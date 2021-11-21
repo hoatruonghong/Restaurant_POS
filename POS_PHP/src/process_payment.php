@@ -57,29 +57,58 @@
 			$sql = "UPDATE `order` SET `status` = 1, `payment_date` = '$payment_date' WHERE `ID` = '$OID';";
 			$res = mysqli_query($conn, $sql);			
 		}
-		echo "<!DOCTYPE html>
-		<html>
-		<head>
-			<meta charset=\"utf-8\">
-			<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-			<title>Payment</title>
-			<link rel=\"stylesheet\" type=\"text/css\" href=\"../styles/payment_style.css\">
-		
-			<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">
-			<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\" crossorigin=\"anonymous\"></script>
-		</head>
-		<body>
-			<div class=\"container-fluid bg-light\" >
-				<nav class=\"navbar header-color\">
-					  <div class=\"container\">
-						<a class=\"header-title\">THANH TOÁN</a>
-						<a href=\"home.html\" class=\"navbar-brand\" style=\"color:#2C3A57\"> Quay về trang chủ </a>
-					  </div>
-				</nav>";
-		echo "Chúc mừng bạn đã thanh toán thành công!";
-		include ('component/footer.php');
-		
-
 	}
 	
+?>
+
+ <?php 	
+include ('component/header.php');
  ?>
+
+<div class="contain">
+	<div class="main" >
+		<div class="card text-center">
+		  	<img class="checked-img" style="align-self: center;" src="../images/checked.png" class="card-img-top" alt="checked">
+			<div class="card-body ">
+			    <h3 class="card-title">Thành công</h3>
+			    <p class="card-text">Xin cảm ơn quý khách!</p>
+			</div>
+			<div class="card-body ">
+			    <a href="menu.php" class="w-50">Về Menu</a>
+			</div>
+			<div class="time_container" style="color: lightslategrey;">Tự động quay về menu trong <span id="time">10</span>s</div>
+			
+			
+		</div>
+	</div>
+</div>
+
+<?php 
+
+	include ('component/footer.php');
+
+?>
+
+<script type="text/javascript">
+	
+	function startTimer(duration, display) {
+	    var timer = duration, seconds;
+	    setInterval(function () {
+	        seconds = parseInt(timer % 60, 10);
+
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+	        display.textContent = seconds;
+	        --timer
+	        if(timer === -1)
+	        	window.location.href = "menu.php";
+	    }, 1000);
+
+	}
+
+	window.onload = function () {
+	    var tenSeconds = 10,
+	        display = document.querySelector('#time');
+	    startTimer(tenSeconds, display);
+	};
+</script>
